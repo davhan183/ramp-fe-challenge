@@ -6,6 +6,17 @@ export const AppContextProvider: AppContextProviderComponent = ({ children }) =>
   const cache = useRef(new Map<string, string>())
   const [error, setError] = useState<string>("")
 
+  if (process.env.REACT_APP_USE_BROWSER_CACHE && localStorage) {
+    if (!cache.current.size) {
+      Object.keys(localStorage).forEach(key => {
+        const localResult = localStorage.getItem(key);
+        if (localResult) cache?.current.set(key, localResult)
+      })
+    }
+  } else {
+    localStorage.clear()
+  }
+
   return (
     <AppContext.Provider value={{ setError, cache }}>
       {error ? (

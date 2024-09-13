@@ -3,6 +3,8 @@ import { AppContext } from "../utils/context"
 import { fakeFetch, RegisteredEndpoints } from "../utils/fetch"
 import { useWrappedRequest } from "./useWrappedRequest"
 
+const useBrowserCache = process.env.REACT_APP_USE_BROWSER_CACHE;
+
 export function useCustomFetch() {
   const { cache } = useContext(AppContext)
   const { loading, wrappedRequest } = useWrappedRequest()
@@ -22,7 +24,10 @@ export function useCustomFetch() {
         }
 
         const result = await fakeFetch<TData>(endpoint, params)
-        cache?.current.set(cacheKey, JSON.stringify(result))
+        
+        const cacheResult = JSON.stringify(result)
+        cache?.current.set(cacheKey, cacheResult)
+        if (useBrowserCache) localStorage.setItem(cacheKey, cacheResult)
         return result
       }),
     [cache, wrappedRequest]
@@ -46,6 +51,7 @@ export function useCustomFetch() {
     }
 
     cache.current = new Map<string, string>()
+    if (useBrowserCache) localStorage.clear()
   }, [cache])
 
   const clearCacheByEndpoint = useCallback(
@@ -54,13 +60,14 @@ export function useCustomFetch() {
         return
       }
 
-      const cacheKeys = Array.from(cache.current.keys())
+      const cacheKeys: string[] = Array.from(cache.current.keys())
 
       for (const key of cacheKeys) {
         const clearKey = endpointsToClear.some((endpoint) => key.startsWith(endpoint))
 
         if (clearKey) {
           cache.current.delete(key)
+          if (useBrowserCache) localStorage.removeItem(key)
         }
       }
     },

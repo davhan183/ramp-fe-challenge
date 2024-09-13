@@ -1,3 +1,6 @@
+# Extra Change
+Implemented refresh persistent context cache with strongly consistent browser cache (disable and enable with `REACT_APP_USE_BROWSER_CACHE`).
+
 # Instructions
 
 Welcome to Ramp's frontend interview challenge.
