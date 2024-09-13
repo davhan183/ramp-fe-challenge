@@ -92,7 +92,9 @@ hr.RampBreak--l {
 
 .RampInputSelect--dropdown-container {
   display: none;
-  position: fixed;
+  /* Remove position entirely or set to static or inherit
+  to make dropdown not cover RampGrid list */
+  position: absolute;
   width: 100%;
   max-width: 700px;
   border: 1px solid var(--color-darker-shade);
