@@ -39,6 +39,31 @@ export const getTransactionsPaginated = ({
   }
 }
 
+export const getTransactionsByEmployeePaginated = ({
+  page,
+  employeeId
+}: PaginatedRequestParams & RequestByEmployeeParams): PaginatedResponse<Transaction[]> => {
+  if (page === null) {
+    throw new Error("Page cannot be null")
+  }
+
+  const start = page * TRANSACTIONS_PER_PAGE
+  const end = start + TRANSACTIONS_PER_PAGE
+
+  const employeeTransactions = getTransactionsByEmployee({ employeeId });
+
+  if (start > employeeTransactions.length) {
+    throw new Error(`Invalid page ${page}`)
+  }
+
+  const nextPage = end < employeeTransactions.length ? page + 1 : null
+
+  return {
+    nextPage,
+    data: employeeTransactions.slice(start, end),
+  }
+}
+
 export const getTransactionsByEmployee = ({ employeeId }: RequestByEmployeeParams) => {
   if (!employeeId) {
     throw new Error("Employee id cannot be empty")

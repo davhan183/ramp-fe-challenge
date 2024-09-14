@@ -7,6 +7,8 @@
 
 All changes made with corresponding expected behavior and minimal changes to original codebase for reference
 
+Paginated `transactionsByEmployee` with corresponding expected behavior and minimal changes to original codebase for reference
+
 # Instructions
 
 Welcome to Ramp's frontend interview challenge.

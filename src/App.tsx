@@ -4,17 +4,17 @@ import { Instructions } from "./components/Instructions"
 import { Transactions } from "./components/Transactions"
 import { useEmployees } from "./hooks/useEmployees"
 import { usePaginatedTransactions } from "./hooks/usePaginatedTransactions"
-import { useTransactionsByEmployee } from "./hooks/useTransactionsByEmployee"
+import { usePaginatedTransactionsByEmployee } from "./hooks/useTransactionsByEmployee"
 import { EMPTY_EMPLOYEE } from "./utils/constants"
 import { Employee } from "./utils/types"
 
 export function App() {
   const { data: employees, ...employeeUtils } = useEmployees()
   const { data: paginatedTransactions, ...paginatedTransactionsUtils } = usePaginatedTransactions()
-  const { data: transactionsByEmployee, ...transactionsByEmployeeUtils } = useTransactionsByEmployee()
+  const { data: transactionsByEmployee, ...transactionsByEmployeeUtils } = usePaginatedTransactionsByEmployee()
 
   const transactions = useMemo(
-    () => paginatedTransactions?.data ?? transactionsByEmployee ?? null,
+    () => paginatedTransactions?.data ?? transactionsByEmployee?.data ?? null,
     [paginatedTransactions, transactionsByEmployee]
   )
 
@@ -80,6 +80,17 @@ export function App() {
               className="RampButton"
               disabled={paginatedTransactionsUtils.loading}
               onClick={loadAllTransactions}
+            >
+              View More
+            </button>
+          )}
+          {transactions && !paginatedTransactions && transactionsByEmployee?.nextPage !== null && (
+            <button
+              className="RampButton"
+              disabled={transactionsByEmployeeUtils.loading}
+              onClick={async () => {
+                await transactionsByEmployeeUtils.fetchNext()
+              }}
             >
               View More
             </button>

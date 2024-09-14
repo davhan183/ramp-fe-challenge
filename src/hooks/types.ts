@@ -14,8 +14,14 @@ type UseTypeBaseByIdResult<TValue> = UseTypeBaseResult<TValue> & {
   fetchById: (id: string) => Promise<void>
 }
 
+type UseTypeBaseNextResult<TValue> = UseTypeBaseResult<TValue> & UseTypeBaseByIdResult<TValue> & {
+  fetchNext: () => Promise<void>
+}
+
 export type EmployeeResult = UseTypeBaseAllResult<Employee[] | null>
 
 export type PaginatedTransactionsResult = UseTypeBaseAllResult<PaginatedResponse<Transaction[]> | null>
+
+export type PaginatedTransactionsByEmployeeResult = UseTypeBaseNextResult<PaginatedResponse<Transaction[]> | null>
 
 export type TransactionsByEmployeeResult = UseTypeBaseByIdResult<Transaction[] | null>

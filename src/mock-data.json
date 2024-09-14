@@ -18,6 +18,45 @@
   ],
   "transactions": [
     {
+      "id": "77af111b-4177-4774-af57-36df9053e1df1",
+      "amount": 95.22,
+      "employee": {
+        "id": "89bd9324-04e0-4cd6-aa27-981508bd219f",
+        "firstName": "James",
+        "lastName": "Smith",
+        "extras": 2
+      },
+      "merchant": "Social Media Ads Inc 1",
+      "date": "8/5/2022",
+      "approved": true
+    },
+    {
+      "id": "77af111b-4177-4774-af57-36df9053e1df2",
+      "amount": 95.22,
+      "employee": {
+        "id": "89bd9324-04e0-4cd6-aa27-981508bd219f",
+        "firstName": "James",
+        "lastName": "Smith",
+        "extras": 2
+      },
+      "merchant": "Social Media Ads Inc 2",
+      "date": "8/5/2022",
+      "approved": true
+    },
+    {
+      "id": "77af111b-4177-4774-af57-36df9053e1df3",
+      "amount": 95.22,
+      "employee": {
+        "id": "89bd9324-04e0-4cd6-aa27-981508bd219f",
+        "firstName": "James",
+        "lastName": "Smith",
+        "extras": 2
+      },
+      "merchant": "Social Media Ads Inc 3",
+      "date": "8/5/2022",
+      "approved": true
+    },
+    {
       "id": "77af111b-4177-4774-af57-36df9053e1df",
       "amount": 95.22,
       "employee": {
