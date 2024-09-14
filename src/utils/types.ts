@@ -30,3 +30,7 @@ export type SetTransactionApprovalParams = {
   transactionId: string
   value: boolean
 }
+
+export type Approvals = {
+  [key: string]: boolean
+}
