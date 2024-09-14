@@ -1,6 +1,8 @@
 # Extra Change
 Implemented refresh persistent context cache with strongly consistent browser cache (disable and enable with `REACT_APP_USE_BROWSER_CACHE`).
 
+Paginated `transactionsByEmployee` with corresponding expected behavior and minimal changes to original codebase for reference (See branch `paginated-transactionsByEmployee`)
+
 # Instructions
 
 Welcome to Ramp's frontend interview challenge.
