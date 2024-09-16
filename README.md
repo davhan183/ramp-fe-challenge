@@ -1,7 +1,11 @@
-# Extra Change
-Implemented refresh persistent context cache with strongly consistent browser cache (disable and enable with `REACT_APP_USE_BROWSER_CACHE`).
+# Extra Changes
+- Implemented refresh persistent context cache with strongly consistent browser cache (disable and enable with `REACT_APP_USE_BROWSER_CACHE`).
 
-Paginated `transactionsByEmployee` with corresponding expected behavior and minimal changes to original codebase for reference (See branch `paginated-transactionsByEmployee`)
+- Implemented batch _Approve Changes_ and _Reset Changes_ for approvals
+
+- Paginated `transactionsByEmployee` (See branch `paginated-transactionsByEmployee`)
+
+All changes made with corresponding expected behavior and minimal changes to original codebase for reference
 
 # Instructions
 
