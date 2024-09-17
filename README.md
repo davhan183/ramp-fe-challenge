@@ -1,7 +1,8 @@
 # Extra Changes
+
 - Implemented refresh persistent context cache with strongly consistent browser cache (disable and enable with `REACT_APP_USE_BROWSER_CACHE`).
 
-- Implemented batch _Approve Changes_ and _Reset Changes_ for approvals
+- Implemented batch _Approve Changes_ and _Reset Changes_ for approvals to improve UX (See main before commit "implemented batch approval changes + updated README" for non batch approval version as outlined in instructions)
 
 - Paginated `transactionsByEmployee` (See branch `paginated-transactionsByEmployee`)
 
